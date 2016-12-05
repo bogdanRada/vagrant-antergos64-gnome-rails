@@ -2,4 +2,4 @@
 export rvm_project_rvmrc=1
 export rvm_trust_rvmrcs_flag=1
 export rvm_project_rvmrc_default=1
-rvm use 'ruby-2.3.0@sass-issue' --create
+rvm use 'ruby-2.3.0@activeadmin-testing' --create
