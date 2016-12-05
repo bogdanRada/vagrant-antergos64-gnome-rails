@@ -1376,3 +1376,14 @@ Processing by ActiveAdmin::Devise::SessionsController#new as HTML
 Completed 200 OK in 624ms (Views: 592.2ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/admin/login" for 127.0.0.1 at 2016-12-05 09:04:20 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /home/raul/.rvm/gems/ruby-2.3.0@activeadmin-testing/gems/activeadmin-1.0.0.pre4/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /home/raul/.rvm/gems/ruby-2.3.0@activeadmin-testing/gems/activeadmin-1.0.0.pre4/app/views/active_admin/devise/shared/_links.erb (1.9ms)
+  Rendered /home/raul/.rvm/gems/ruby-2.3.0@activeadmin-testing/gems/activeadmin-1.0.0.pre4/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (48.6ms)
+Completed 200 OK in 4544ms (Views: 4507.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/active_admin.self-af3feea2c73b7ca396c153e8376272aa69aeb89062e3ed9ff984cb7865268793.css?body=1" for 127.0.0.1 at 2016-12-05 09:04:24 +0200
+Started GET "/assets/active_admin/print.self-b4eadfb02d09ba5af7b3015c4fe8e4946a6d0a16a00ef097afc4e6ae503c73cc.css?body=1" for 127.0.0.1 at 2016-12-05 09:04:24 +0200

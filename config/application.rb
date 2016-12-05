@@ -1,17 +1,9 @@
 # frozen_string_literal: false
 require File.expand_path('../boot', __FILE__)
 
-require 'rails'
+require 'rails/all'
 # Pick the frameworks you want:
-require 'active_model/railtie'
-require 'active_job/railtie'
-require 'active_record/railtie'
-require 'action_controller/railtie'
-require 'action_mailer/railtie'
-require 'action_view/railtie'
-require 'sprockets/railtie'
 # require "rails/test_unit/railtie"
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -19,7 +11,7 @@ Bundler.require(*Rails.groups)
 module Api
   # base class used for configuring the app
   class Application < Rails::Application
-    
+
     I18n.enforce_available_locales = false
 
     config.autoload_paths << config.root.join('lib', 'classes')
