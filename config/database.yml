@@ -1,0 +1,25 @@
+defaults: &defaults
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+development:
+  database: db/development.sqlite3
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+test:
+  database: db/test.sqlite3
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+staging:
+  database: db/staging.sqlite3
+  <<: *defaults
+
+production:
+  database: db/production.sqlite3
+  <<: *defaults
+  
