@@ -63,9 +63,6 @@ printf "\n\n"
 echo "Set keyboard Locale configuration"
 echo 'KEYMAP=de-latin1' >> /etc/vconsole.conf
 
-printf "\n\n"
-echo "### Fix  conflict !!!"
-unsplit libdbus
 
 printf "\n\n"
 echo "### Install curl"

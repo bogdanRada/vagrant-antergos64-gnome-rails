@@ -73,7 +73,7 @@ Vagrant.configure("2") do |config|
   config.vm.host_name = "echo"
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "tranchung/antergos-x64-minimal"
+  config.vm.box = "raganharr/antergos"
 
   if config.respond_to?(:vbguest=)
     # set auto_update to false, if you do NOT want to check the correct
@@ -121,7 +121,7 @@ Vagrant.configure("2") do |config|
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = 'https://atlas.hashicorp.com/tranchung/boxes/antergos-x64-minimal/versions/1.0/providers/virtualbox.box'
+  config.vm.box_url = 'https://atlas.hashicorp.com/Raganharr/boxes/antergos/versions/1.0.0/providers/virtualbox.box'
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
@@ -156,6 +156,6 @@ Vagrant.configure("2") do |config|
   # end
 
   # Provision with a shell script
-  config.vm.provision "system_setup", type: "shell", :path => "vagrant_provisioners/sytem_provision.sh",  :args => [vagrant_folder]
-  config.vm.provision "ruby_setup", type: "shell", path: "vagrant_provisioners/rvm_ruby_setup.sh", privileged: false, :args => ['2.3.0', '1.13.6'], :run => 'always'
+  config.vm.provision "system_setup", type: "shell", :path => "vagrant_provisioners/sytem_provision.sh",  :args => [vagrant_folder], run: 'always'
+#  config.vm.provision "ruby_setup", type: "shell", path: "vagrant_provisioners/rvm_ruby_setup.sh", privileged: false, :args => ['2.3.0', '1.13.6'], :run => 'always'
 end
