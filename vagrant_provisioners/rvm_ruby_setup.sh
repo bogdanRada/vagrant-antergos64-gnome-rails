@@ -20,6 +20,7 @@ then
   echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> .bashrc
   source .bashrc
   source ~/.rvm/scripts/rvm
+  rvm requirements
   rvm autolibs enable
   touch $HOME/rvm_install_flag
 else

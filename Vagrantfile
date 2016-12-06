@@ -154,8 +154,8 @@ Vagrant.configure("2") do |config|
   # else
   #   config.vm.synced_folder ".", "/vagrant", mount_options: ['dmode=777','fmode=666']
   # end
-
+  
   # Provision with a shell script
-  config.vm.provision "system_setup", type: "shell", :path => "spec/vagrant_provisioners/vagrant_provision.sh"
-  config.vm.provision "ruby_setup", type: "shell", path: "spec/vagrant_provisioners/rvm_ruby_setup.sh", privileged: false, :args => ['2.3.0', '1.13.6'], :run => 'always'
+  config.vm.provision "system_setup", type: "shell", :path => "vagrant_provisioners/vagrant_provision.sh",  :args => [vagrant_folder], :run => 'always'
+#  config.vm.provision "ruby_setup", type: "shell", path: "vagrant_provisioners/rvm_ruby_setup.sh", privileged: false, :args => ['2.3.0', '1.13.6'], :run => 'always'
 end
