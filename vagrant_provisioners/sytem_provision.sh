@@ -161,9 +161,7 @@ pacman -Syfu \
     gvim nano  libreadline6-dev libyaml sqlite\
     gpm
 
-printf "\n\n"
-echo 'Starting MySql...'
-service mysql start
+
 
 printf "\n\n"
 echo "### Change default editor to nano"
@@ -171,7 +169,6 @@ if [ -z "`grep -Fl 'EDITOR=nano' /home/vagrant/.bashrc`" ]; then
   echo $'\n''export EDITOR=nano' >> /home/vagrant/.bashrc
   source /home/vagrant/.bashrc
 fi
-
 
 printf "\n\n"
 echo "### Creating Downloads and bin folder and running chown on bin folder"
@@ -189,22 +186,4 @@ else
 fi
 
 
-
-
-
-
-# printf "\n\n"
-# echo "### Installing Virtualbox Guest Additions"
-# wget -q http://download.virtualbox.org/virtualbox/5.0.22/VBoxGuestAdditions_5.0.22.iso
-# mkdir /media/VBoxGuestAdditions
-# mount -o loop,ro VBoxGuestAdditions_5.0.22.iso /media/VBoxGuestAdditions
-# sh /media/VBoxGuestAdditions/VBoxLinuxAdditions.run <<!
-# yes
-# !
-# rm VBoxGuestAdditions_5.0.22.iso
-# umount /media/VBoxGuestAdditions
-# rmdir /media/VBoxGuestAdditions
-
-# currently rebooting in the middle of provisioning can only be done with Windows. Ubuntu can't handle reboots during provisioning
-# shutdown -t 30 -r -f
 echo "**end"
