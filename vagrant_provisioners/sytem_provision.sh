@@ -46,8 +46,7 @@ timedatectl set-ntp true
 
 printf "\n\n"
 echo "Set the time zone"
-ln -s /usr/share/zoneinfo/Region/City /etc/localtime
-
+timedatectl set-timezone Etc/UTC
 
 printf "\n\n"
 echo "Run hwclock to generate /etc/adjtime:"
@@ -72,16 +71,11 @@ pacman -Syu curl
 printf "\n\n"
 echo "### Installing necessary packages"
 pacman -Syu autoconf
-pacman -Syu automake-wrapper
 pacman -Syu bash
 pacman -Syu bash-completion
 pacman -Syu bison
-pacman -Syu bsdcpio
-pacman -Syu bsdtar
 pacman -Syu bzip2
-pacman -Syu catgets
 pacman -Syu coreutils
-pacman -Syu crypt
 pacman -Syu curl
 pacman -Syu dash
 pacman -Syu file
@@ -93,69 +87,33 @@ pacman -Syu gcc-libs
 pacman -Syu grep
 pacman -Syu gzip
 pacman -Syu inetutils
-pacman -Syu info
 pacman -Syu less
-pacman -Syu lndir
 pacman -Syu make
 pacman -Syu man-db
 pacman -Syu mercurial
-pacman -Syu mingw-w64-x86_64-freeglut
-pacman -Syu mingw-w64-x86_64-gcc
-pacman -Syu mingw-w64-x86_64-gcc-fortran
-pacman -Syu mingw-w64-x86_64-gsl
-pacman -Syu mingw-w64-x86_64-hdf5
-pacman -Syu mingw-w64-x86_64-openblas
-pacman -Syu mintty
-pacman -Syu msys2-keyring
-pacman -Syu msys2-launcher-git
-pacman -Syu msys2-runtime
 pacman -Syu ncurses
 pacman -Syu pacman
-pacman -Syu pacman-mirrors
-pacman -Syu pactoys-git
 pacman -Syu patch
-pacman -Syu pax-git
 pacman -Syu perl
 pacman -Syu pkg-config
 pacman -Syu pkgfile
-pacman -Syu rebase
 pacman -Syu sed
 pacman -Syu tar
 pacman -Syu tftp-hpa
 pacman -Syu time
-pacman -Syu tzcode
 pacman -Syu unzip
 pacman -Syu util-linux
 pacman -Syu which gnupg readline
 
 echo "1) gnustep-make"
-pacman -Syu autogen automake  autoconf2.13 libtool mingw-w64-i686-libtool
-pacman -Syu mingw-w64-i686-toolchain
-pacman -Syu mingw-w64-i686-pkg-config
-
-echo "3) gnustep-gui"
-pacman -Syu mingw-w64-i686-libjpeg-turbo
-pacman -Syu mingw-w64-i686-libtiff
-pacman -Syu mingw-w64-i686-giflib
-pacman -Syu mingw-w64-i686-icu
-pacman -Syu mingw-w64-i686-libsndfile
-pacman -Syu mingw-w64-i686-aspell
-pacman -Syu mingw-w64-i686-lcms mingw-w64-i686-lcms2
-pacman -Syu mingw-w64-i686-sqlite3
-pacman -Syu mingw-w64-bison
-
+pacman -Syu autogen automake  autoconf2.13 libtool
 pacman -Syu asciidoc
-pacman -Syu mingw-w64-i686-windows-default-manifest
 
-echo "4) gnustep-back"
-pacman -Syu mingw-w64-i686-cairo
-
-
-pacman -Syfu \
-    base-devel abs git gitflow-git \
+pacman -Syu \
+    linux-headers base-devel abs git \
     lib32-openssl lib32-zlib xorg-server \
-    lib32-libxml2 libxml2-dev  lib32-libxslt \
-    gvim nano  libreadline6-dev libyaml sqlite\
+    lib32-libxml2 lib32-libxslt \
+    gvim nano libyaml sqlite\
     gpm
 
 
@@ -182,5 +140,6 @@ else
   echo "export GUI=\"headless\"" >> /home/vagrant/.zshenv
 fi
 
+chmod 777 /home/vagrant/.profile
 
 echo "**end"
