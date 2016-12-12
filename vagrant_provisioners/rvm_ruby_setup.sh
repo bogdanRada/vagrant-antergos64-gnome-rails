@@ -38,11 +38,14 @@ rvm list
 printf "\n\n"
 echo "## Avaiable Gemsets"
 rvm gemset list
-rvm gemdir
 
 printf "\n\n"
 echo "## Install Ruby $version set to default"
 rvm use $version --default --install --quiet-curl
+
+echo "## Show Gem Dir"
+rvm gemdir
+
 
 printf "\n\n"
 echo "## Installing RubyGems"
