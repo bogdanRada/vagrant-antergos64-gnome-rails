@@ -73,7 +73,7 @@ Vagrant.configure("2") do |config|
   config.vm.host_name = "echo"
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "/bogdanRada/antergos64-gnome"
+  config.vm.box = "bogdanRada/antergos64-gnome"
 
   if config.respond_to?(:vbguest)
     # set auto_update to false, if you do NOT want to check the correct
