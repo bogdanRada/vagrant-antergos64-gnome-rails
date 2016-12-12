@@ -1,10 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# https://blog.engineyard.com/2014/building-a-vagrant-box
 
-# Check this https://bugs.launchpad.net/ubuntu/+source/vagrant/+bug/1503565/comments/4 if you have trouble installing vagrant :)
-
-
+# Check this https://bugs.launchpad.net/ubuntu/+source/vagrant/+bug/1503565/comments/4
+# if you have trouble installing vagrant
 
 host = RbConfig::CONFIG['host_os']
 
@@ -61,7 +61,7 @@ defaults = {
 ENV["LC_ALL"] = "en_US.UTF-8" if ENV['LC_ALL'].nil? || ENV['LC_ALL'].empty?
 
 job_name =  ENV['JOB_NAME'].to_s.strip.empty? ? nil :  ENV['JOB_NAME'].to_s.strip
-vagrant_folder = job_name || "vagrant-sass"
+vagrant_folder = job_name || "antergos-ssh"
 vagrant_folder = vagrant_folder.gsub(/[\/\s]+/, '_')
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -73,14 +73,14 @@ Vagrant.configure("2") do |config|
   config.vm.host_name = "echo"
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "raganharr/antergos"
+  config.vm.box = "/bogdanRada/antergos64-gnome"
 
-  if config.respond_to?(:vbguest=)
+  if config.respond_to?(:vbguest)
     # set auto_update to false, if you do NOT want to check the correct
     # additions version when booting this machine
-    config.vbguest.auto_update = true
+    config.vbguest.auto_update = false
     # do NOT download the iso file from a webserver
-    config.vbguest.no_remote = false
+    config.vbguest.no_remote = true
   end
 
   # can see here more options: https://www.virtualbox.org/manual/ch08.html#vboxmanage-modifyvm
@@ -121,7 +121,7 @@ Vagrant.configure("2") do |config|
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = 'https://atlas.hashicorp.com/Raganharr/boxes/antergos/versions/1.0.0/providers/virtualbox.box'
+  config.vm.box_url = 'https://atlas.hashicorp.com/bogdanRada/boxes/antergos64-gnome/versions/1.0.0/providers/virtualbox.box'
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
@@ -156,6 +156,6 @@ Vagrant.configure("2") do |config|
   # end
 
   # Provision with a shell script
-  config.vm.provision "system_setup", type: "shell", :path => "vagrant_provisioners/sytem_provision.sh",  :args => [vagrant_folder], run: 'always'
-#  config.vm.provision "ruby_setup", type: "shell", path: "vagrant_provisioners/rvm_ruby_setup.sh", privileged: false, :args => ['2.3.0', '1.13.6'], :run => 'always'
+  config.vm.provision "system_setup", type: "shell", :path => "vagrant_provisioners/sytem_provision.sh",  :args => [vagrant_folder]
+  config.vm.provision "ruby_setup", type: "shell", path: "vagrant_provisioners/rvm_ruby_setup.sh", privileged: false, :args => ['2.3.0', '1.13.6'], :run => 'always'
 end
