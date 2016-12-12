@@ -140,6 +140,6 @@ else
   echo "export GUI=\"headless\"" >> /home/vagrant/.zshenv
 fi
 
-chmod 777 /home/vagrant/.profile
+chmod 0777 /home/vagrant/.profile
 
 echo "**end"
