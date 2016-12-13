@@ -110,7 +110,7 @@ pacman -Syu autogen automake  autoconf2.13 libtool
 pacman -Syu asciidoc
 
 pacman -Syu \
-    linux-headers base-devel abs git \
+    base-devel linux-headers linux-headers-lts dkms openssh abs git \
     lib32-openssl lib32-zlib xorg-server \
     lib32-libxml2 lib32-libxslt \
     gvim nano libyaml sqlite\
