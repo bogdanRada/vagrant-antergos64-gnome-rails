@@ -26,8 +26,6 @@ cat /proc/swaps
 cat /proc/meminfo | grep Swap
 swapon -s
 
-export DEBIAN_FRONTEND=noninteractive
-
 printf "\n\n"
 echo "### Add color prompt"
 touch /home/vagrant/.nano_history
@@ -64,59 +62,22 @@ echo 'KEYMAP=de-latin1' >> /etc/vconsole.conf
 
 
 printf "\n\n"
-echo "### Install curl"
-pacman -Syu curl
-
-
-printf "\n\n"
 echo "### Installing necessary packages"
-pacman -Syu autoconf
-pacman -Syu bash
-pacman -Syu bash-completion
-pacman -Syu bison
-pacman -Syu bzip2
-pacman -Syu coreutils
-pacman -Syu curl
-pacman -Syu dash
-pacman -Syu file
-pacman -Syu filesystem
-pacman -Syu findutils
-pacman -Syu flex
-pacman -Syu gawk
-pacman -Syu gcc-libs
-pacman -Syu grep
-pacman -Syu gzip
-pacman -Syu inetutils
-pacman -Syu less
-pacman -Syu make
-pacman -Syu man-db
-pacman -Syu mercurial
-pacman -Syu ncurses
-pacman -Syu pacman
-pacman -Syu patch
-pacman -Syu perl
-pacman -Syu pkg-config
-pacman -Syu pkgfile
-pacman -Syu sed
-pacman -Syu tar
-pacman -Syu tftp-hpa
-pacman -Syu time
-pacman -Syu unzip
-pacman -Syu util-linux
-pacman -Syu which gnupg readline
-
-echo "1) gnustep-make"
-pacman -Syu autogen automake  autoconf2.13 libtool
-pacman -Syu asciidoc
-
-pacman -Syu \
-    base-devel linux-headers linux-headers-lts dkms openssh abs git \
-    lib32-openssl lib32-zlib xorg-server \
-    lib32-libxml2 lib32-libxslt \
-    gvim nano libyaml sqlite\
-    gpm
-
-
+pacman -Syu --needed \
+  autoconf bash bash-completion bison \
+  bzip2 coreutils curl dash file filesystem \
+  findutils flex gawk gcc-libs grep \
+  gzip inetutils less make man-db \
+  mercurial ncurses pacman patch \
+  perl pkg-config pkgfile sed tar \
+  tftp-hpa time unzip util-linux \
+  which gnupg readline \
+  autogen automake  autoconf2.13 libtool asciidoc \
+  base-devel linux-headers linux-lts-headers dkms openssh abs git \
+  lib32-openssl lib32-zlib xorg-server \
+  lib32-libxml2 lib32-libxslt \
+  gvim nano libyaml sqlite\
+  gpm
 
 printf "\n\n"
 echo "### Change default editor to nano"
@@ -133,12 +94,7 @@ chown -R vagrant:users /home/vagrant/bin
 
 printf "\n\n"
 echo "### Setting GUI to headless"
-if [ "$GUI" == "headless" ]; then
-  echo "GUI is already set to headless"
-else
-  echo "export GUI=\"headless\"" >> /home/vagrant/.profile
-  echo "export GUI=\"headless\"" >> /home/vagrant/.zshenv
-fi
+systemctl set-default multi-user.target
 
 chmod 0777 /home/vagrant/.profile
 
