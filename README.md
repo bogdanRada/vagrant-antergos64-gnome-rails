@@ -1,4 +1,4 @@
-# activeadmin-testing
+# vagrant-antergos64-gnome-rails
 
 This repo provides a Vagrant configuration for deploying Rails Applications into Antergos 64 VM with Gnome
 
